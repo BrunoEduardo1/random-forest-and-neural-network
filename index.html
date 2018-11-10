@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>Árvore</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row p-4">
+				<div class="col-4 card p-3">
+					<div class="row">
+						<div class="col-6">
+							<label>Historico</label>
+							<select id="hist" class="form-control">
+								<option value="0">Desconhecido</option>
+								<option value="1">Ruim</option>
+								<option value="2">Bom</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<label>Debito</label>
+							<select id="deb" class="form-control">
+								<option value="0">Nenhum</option>
+								<option value="1">Baixo</option>
+								<option value="2">Alto</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<label>Garantia</label>
+							<select id="garan" class="form-control">
+								<option value="0">Nenhuma</option>
+								<option value="1">Aceitável</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<label>Renda</label>
+							<input type="number" id="renda" class="form-control">
+						</div>
+						<div class="col-12 text-center mt-2">
+							<button class="btn btn-sm btn-primary" id="test">Verificar</button>
+						</div>
+					</div>
+				</div> <!--col form -->
+			</div>
+			<b>Caso:</b>
+				<div id="testingItem"></div>
+			<br/>
+			<b>Previsão da árvore:</b>
+				<div id="decisionTreePrediction"></div>
+			<br/>
+				<b>Árvore de decisão:</b>
+			<br/>
+			<div class="row">
+				<div class="col">
+					<div class="tree" id="displayTree" style="margin-left: 25%;"></div>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/decision-tree.js"></script>
+	<script type="text/javascript" src="js/core.js"></script>
+</html>
