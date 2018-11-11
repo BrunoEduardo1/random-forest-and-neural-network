@@ -4,6 +4,12 @@ canvas {
     margin-top: 5px;
 }
 
+#displayTree {
+    width: 100em;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 .color-select {
     margin: 1px;
     margin-top: 10px;
