@@ -9,7 +9,7 @@ $(document).ready(function() {
             data = $.csv.toObjects(data);
             processData(data);
             allInt(data);
-            // buildForest(data);
+            buildForest(data);
             buildNeural(data);
 
         }

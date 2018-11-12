@@ -26,4 +26,6 @@ net.train(trainingSet);
 
 const output = net.run({salario: 20000, idade: 20, emprestimo: 2900}); 
 console.log(output);
+document.getElementById('neuralPrediction').innerHTML = JSON.stringify(output, null, 0);
+
 }
