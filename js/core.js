@@ -2,7 +2,7 @@ $(document).ready(function() {
     //Requisitar os dados
     $.ajax({
         type: "GET",
-        url: "credit_datas.csv",
+        url: "credit_data.csv",
         dataType: "text",
         success: function(data) {
             //Trasnformar csv em um array de objetos

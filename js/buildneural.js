@@ -22,7 +22,7 @@ for (var i =0; i < data.length ; i++) {
 	}
 
 net.train(trainingSet);
-console.log(trainingSet);
+// console.log(trainingSet);
 
 const output = net.run({salario: 20000, idade: 20, emprestimo: 2900}); 
 console.log(output);
