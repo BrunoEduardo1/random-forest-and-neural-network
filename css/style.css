@@ -4,7 +4,7 @@ canvas {
     margin-top: 5px;
 }
 
-#displayTree {
+.ar,#displayTree {
     width: 100em;
     overflow-x: auto;
     white-space: nowrap;

@@ -1,4 +1,5 @@
 function buildForest(data) {
+	var i = -1;
 	// Configuration
 	var config = {
 	    trainingSet: data, 
@@ -10,10 +11,10 @@ function buildForest(data) {
 	var decisionTree = new dt.DecisionTree(config);
 
 	// Building Random Forest
-	var numberOfTrees = 3;
+	var numberOfTrees = 4;
 	var randomForest = new dt.RandomForest(config, numberOfTrees);
 
-	console.log(randomForest);
+	// console.log(randomForest.trees[0]);
 
 	// Testing Decision Tree and Random Forest
 	var comic = {salario: 1000, idade: 20, emprestimo: 2900};
@@ -28,8 +29,22 @@ function buildForest(data) {
 	document.getElementById('randomForestPrediction').innerHTML = JSON.stringify(randomForestPrediction, null, 0);
 
 	// Displaying Decision Tree
-	document.getElementById('displayTree').innerHTML = treeToHtml(decisionTree.root);
+	displayTree(decisionTree.root);
 
+	// Displaying Decision Trees from random forest
+	$('#botoes button').on('click', function (event) {
+
+		(event.target.id == 'next') ?
+		(i++,displayTree(randomForest.trees[i].root),$('#prev').removeAttr('disabled')):
+		(i--,displayTree(randomForest.trees[i].root),$('#next').removeAttr('disabled')) ;
+		
+		if (i == 0) {
+			$('#prev').attr('disabled','disabled');
+		} else if(i == numberOfTrees -1) {
+			$('#next').attr('disabled','disabled') 
+		}
+
+	});
 
 	// Recursive (DFS) function for displaying inner structure of decision tree
 	function treeToHtml(tree) {
@@ -61,5 +76,9 @@ function buildForest(data) {
 	                    '</ul>',
 	                '</li>',
 	             '</ul>'].join('');
+	}
+
+	function displayTree(tree) {
+		document.getElementById('displayTree').innerHTML = 'Árvore '+(i+1)+treeToHtml(tree);
 	}
 }

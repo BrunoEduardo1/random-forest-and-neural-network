@@ -8,26 +8,18 @@ $(document).ready(function() {
             //Trasnformar csv em um array de objetos
             data = $.csv.toObjects(data);
             processData(data);
-            //console.log(data[0]);
-            //data[0].emprestimo = parseFloat(data[0].emprestimo.replace(',','.'));
-            console.log(data[0].emprestimo +"é maior que "+'8107,22');
-            console.log(data[0].emprestimo > 8107.22);
             allInt(data);
-            // console.log(data);
-            //subst(data);
-            //console.log(data);
             buildForest(data);
 
         }
      });
 });
+//remove a coluna id e verifica se os dados são válidos
 function processData(data) {
     for (var i = 0; i < data.length; i++) {
         delete data[i].cliente_id;
         for (var propriedade in data[i]) {
-            //data[i][propriedade].length == 0 || 
           if (data[i][propriedade]=== "" || parseFloat(data[i][propriedade].replace(',','.'))< 0) {
-
             // console.log(data[i].cliente_id);
             // console.log(propriedade);
             //remove dado da base
@@ -40,17 +32,12 @@ function processData(data) {
           }
 
         }//fim for propriedades
-
-        //console.log(data[i]);
-        // if(i == 30) {break}; 
    
     }//fim for todos os registros
 }
 
 function allInt(data) {
    
-    // if (coluna == "rotulo") {break;}
-
     for (var i = 0; i < data.length; i++) {
         for (var propriedade in data[i]) {
             data[i][propriedade] = parseInt(data[i][propriedade]);
