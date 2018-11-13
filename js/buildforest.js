@@ -1,10 +1,11 @@
 function buildForest(data) {
-	var i = -1;
+	var i = -1, caso = {salario:2000, idade: 21, emprestimo:10000}; //{salario:2000, idade: 21, emprestimo:10000};
 	// Configuration
 	var config = {
 	    trainingSet: data, 
 	    categoryAttr: 'rotulo', 
-	    //ignoredAttributes: ['cliente_id']
+	    //ignoredAttributes: ['cliente_id'],
+	    //maxTreeDepth: 70 //por padrão
 	};
 
 	// Building Decision Tree
@@ -17,16 +18,19 @@ function buildForest(data) {
 	// console.log(randomForest.trees[0]);
 
 	// Testing Decision Tree and Random Forest
-	var comic = {salario: 1000, idade: 20, emprestimo: 2900};
+	$('#verificar').on('click',function () {
+		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
+		var decisionTreePrediction = decisionTree.predict(caso);
+		var randomForestPrediction = randomForest.predict(caso);
+		// Displaying predictions
+		document.getElementById('testingItem').innerHTML = JSON.stringify(caso, null, 0);
+		document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
+		document.getElementById('randomForestPrediction').innerHTML = JSON.stringify(randomForestPrediction, null, 0);
+	});
+		var decisionTreePrediction = decisionTree.predict(caso);
+		document.getElementById('testingItem').innerHTML = JSON.stringify(caso, null, 0);
+		document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
 
-	var decisionTreePrediction = decisionTree.predict(comic);
-	var randomForestPrediction = randomForest.predict(comic);
-
-
-	// Displaying predictions
-	document.getElementById('testingItem').innerHTML = JSON.stringify(comic, null, 0);
-	document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
-	document.getElementById('randomForestPrediction').innerHTML = JSON.stringify(randomForestPrediction, null, 0);
 
 	// Displaying Decision Tree
 	displayTree(decisionTree.root);
