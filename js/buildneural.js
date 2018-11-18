@@ -21,7 +21,7 @@ function buildNeural(data) {
 			trainingSet[i] = object;
 		}
 
-		net.train(trainingSet);
+		net.train(trainingSet, {learningRate: 0.2,iterations: 1000,log: true});
 	// console.log(trainingSet);
 	$('#verificar').on('click',function () {
 		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};

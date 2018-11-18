@@ -2,7 +2,7 @@ $(document).ready(function() {
     //Requisitar os dados
     $.ajax({
         type: "GET",
-        url: "credit_data.csv",
+        url: "https://raw.githubusercontent.com/BrunoEduardo1/teste-dados/master/credit_datas.csv",
         dataType: "text",
         success: function(data) {
             //Trasnformar csv em um array de objetos
