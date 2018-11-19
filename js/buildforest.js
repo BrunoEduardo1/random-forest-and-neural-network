@@ -12,7 +12,7 @@ function buildForest(data) {
 	var decisionTree = new dt.DecisionTree(config);
 
 	// Building Random Forest
-	var numberOfTrees = 4;
+	var numberOfTrees = 10;
 	var randomForest = new dt.RandomForest(config, numberOfTrees);
 
 	// console.log(randomForest.trees[0]);
@@ -66,7 +66,7 @@ function buildForest(data) {
 	    return  ['<ul>',
 	                '<li>',
 	                    '<a href="#">',
-	                        '<b>', tree.attribute, ' ', tree.predicateName, ' ', tree.pivot, ' ?</b>',
+	                        '<b>', tree.attribute, ' ', tree.predicateName, ' ', tree.pivot.toFixed(2), ' ?</b>',
 	                    '</a>',
 	                    '<ul>',
 	                        '<li>',
