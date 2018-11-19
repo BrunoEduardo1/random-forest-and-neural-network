@@ -2,13 +2,14 @@ $(document).ready(function() {
     //Requisitar os dados
     $.ajax({
         type: "GET",
-        url: "https://raw.githubusercontent.com/BrunoEduardo1/teste-dados/master/credit_datas.csv",
+        url: "credit_data.csv",
         dataType: "text",
         success: function(data) {
             //Trasnformar csv em um array de objetos
             data = $.csv.toObjects(data);
             processData(data);
-            allInt(data);
+            //console.table(data);
+            //allInt(data);
             buildForest(data);
             buildNeural(data);
         }
@@ -19,8 +20,10 @@ function processData(data) {
     for (var i = 0; i < data.length; i++) {
         delete data[i].cliente_id;
         for (var propriedade in data[i]) {
-          if (data[i][propriedade]=== "" || parseFloat(data[i][propriedade].replace(',','.'))< 0) {
-            // console.log(propriedade);
+        data[i][propriedade] = data[i][propriedade].toString().replace(',','.');
+        data[i][propriedade] = parseFloat(data[i][propriedade]);
+          if (isNaN(data[i][propriedade]) || data[i][propriedade]=== "" || data[i][propriedade] < 0) {
+            //console.log(propriedade);
             //remove dado da base
             data.splice(i,1);
             i=0;
