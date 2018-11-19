@@ -2,6 +2,7 @@ function buildNeural(data) {
 	const config = {
 		binaryThresh: 0.5,
     	hiddenLayers: [3],     // array of ints for the sizes of the hidden layers in the network
+    	outputSize: 4,
     	activation: 'sigmoid'  // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh']
 	};
 
@@ -21,14 +22,14 @@ function buildNeural(data) {
 			trainingSet[i] = object;
 		}
 
-		net.train(trainingSet, {learningRate: 0.2,iterations: 1000,log: true});
-	// console.log(trainingSet);
+		net.train(trainingSet, {learningRate: 0.2,iterations: 15000,log: false});
+	console.log(net.test(trainingSet));
 	$('#verificar').on('click',function () {
 		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
 		var output = net.run(caso);
-		// console.log(caso);
-		// console.log(output);
-		document.getElementById('neuralPrediction').innerHTML = JSON.stringify(output, null, 0); 	
+		console.log(net);
+		console.log(output);
+		document.getElementById('neuralPrediction').innerHTML = "Probabilidade de reprovação: "+(output.rotulo*100).toFixed(2)+"%"; 	
 	});	
 
 }
