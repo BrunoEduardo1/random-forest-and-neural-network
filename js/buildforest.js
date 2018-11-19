@@ -19,7 +19,7 @@ function buildForest(data) {
 
 	// Testing Decision Tree and Random Forest
 	$('#verificar').on('click',function () {
-		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
+		caso = {salario: parseFloat($('#salario').val()), idade: parseFloat($('#idade').val()), emprestimo: parseFloat($('#emprestimo').val())};
 		var decisionTreePrediction = decisionTree.predict(caso);
 		var randomForestPrediction = randomForest.predict(caso);
 		// Displaying predictions
