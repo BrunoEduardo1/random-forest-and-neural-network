@@ -23,7 +23,7 @@ function buildNeural(data) {
 		}
 
 		net.train(trainingSet, {learningRate: 0.01,iterations: 15000,log: false});
-		matriz(net.test(trainingSet));
+		// matriz(net.test(trainingSet));
 	$('#verificar').on('click',function () {
 		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
 		var output = net.run(caso);
@@ -45,4 +45,10 @@ function matriz(log){
 	log.total
 	*/
 	console.log(log);
+	document.getElementById('tabela').innerHTML = '<table class="table"><thead>'+
+		'<td> - </td><td>Predicted yes</td><td>Predicted no</td></thead>'+
+		'<tbody><tr><td>Actual yes</td><td>'+log.truePos+'</td><td>'+log.falseNeg+'</td></tr>'+
+		'<tr><td>Actual no</td><td>'+log.falsePos+'</td><td>'+log.trueNeg+'</td></tr></tbody>'+
+		'<small>Acuracia: '+(log.accuracy*100).toFixed(2)+"%</small"+'</table>';
+
 }
