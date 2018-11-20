@@ -22,8 +22,8 @@ function buildNeural(data) {
 			trainingSet[i] = object;
 		}
 
-		net.train(trainingSet, {learningRate: 0.2,iterations: 15000,log: false});
-	console.log(net.test(trainingSet));
+		net.train(trainingSet, {learningRate: 0.01,iterations: 15000,log: false});
+		matriz(net.test(trainingSet));
 	$('#verificar').on('click',function () {
 		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
 		var output = net.run(caso);
@@ -32,4 +32,17 @@ function buildNeural(data) {
 		document.getElementById('neuralPrediction').innerHTML = "Probabilidade de reprovação: "+(output.rotulo*100).toFixed(2)+"%"; 	
 	});	
 
+}
+//Recebe informações do treino da rede
+function matriz(log){
+	/*
+	log.error
+	log.accuracy
+	log.falseNeg
+	log.falsePos
+	log.trueNeg
+	log.truePos
+	log.total
+	*/
+	console.log(log);
 }
