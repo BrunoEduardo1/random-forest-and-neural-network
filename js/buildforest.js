@@ -12,7 +12,7 @@ function buildForest(data) {
 	var decisionTree = new dt.DecisionTree(config);
 
 	// Building Random Forest
-	var numberOfTrees = 10;
+	var numberOfTrees = 100;
 	var randomForest = new dt.RandomForest(config, numberOfTrees);
 
 	// console.log(randomForest.trees[0]);

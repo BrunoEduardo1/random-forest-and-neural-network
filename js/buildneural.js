@@ -29,7 +29,7 @@ function buildNeural(data) {
 		var output = net.run(caso);
 		console.log(net);
 		console.log(output);
-		document.getElementById('neuralPrediction').innerHTML = "Probabilidade de reprovação: "+(output.rotulo*100).toFixed(2)+"%"; 	
+		document.getElementById('neuralPrediction').innerHTML = "Probabilidade: "+(output.rotulo*100).toFixed(2)+"%"; 	
 	});	
 
 }
