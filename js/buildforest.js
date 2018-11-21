@@ -1,5 +1,5 @@
 function buildForest(data) {
-	var i = -1, caso = {salario:2000, idade: 21, emprestimo:10000}; //{salario:2000, idade: 21, emprestimo:10000};
+	var i = -1, caso = {}; 
 	// Configuration
 	var config = {
 	    trainingSet: data, 
@@ -26,14 +26,15 @@ function buildForest(data) {
 		document.getElementById('testingItem').innerHTML = JSON.stringify(caso, null, 0);
 		document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
 		document.getElementById('randomForestPrediction').innerHTML = JSON.stringify(randomForestPrediction, null, 0);
+		displayTree(randomForest.trees[0].root);
 	});
-		var decisionTreePrediction = decisionTree.predict(caso);
-		document.getElementById('testingItem').innerHTML = JSON.stringify(caso, null, 0);
-		document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
+		// var decisionTreePrediction = decisionTree.predict(caso);
+		// document.getElementById('testingItem').innerHTML = JSON.stringify(caso, null, 0);
+		// document.getElementById('decisionTreePrediction').innerHTML = JSON.stringify(decisionTreePrediction, null, 0);
 
 
 	// Displaying Decision Tree
-	displayTree(decisionTree.root);
+	//displayTree(decisionTree.root);
 
 	// Displaying Decision Trees from random forest
 	$('#botoes button').on('click', function (event) {
