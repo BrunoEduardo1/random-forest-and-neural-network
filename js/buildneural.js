@@ -23,7 +23,7 @@ function buildNeural(data) {
 		}
 
 		net.train(trainingSet, {learningRate: 0.01,iterations: 15000,log: false});
-		// matriz(net.test(trainingSet));
+		matriz(net.test(trainingSet));
 	$('#verificar').on('click',function () {
 		caso = {salario: parseInt($('#salario').val()), idade: parseInt($('#idade').val()), emprestimo: parseInt($('#emprestimo').val())};
 		var output = net.run(caso);
